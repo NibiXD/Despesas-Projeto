@@ -56,17 +56,24 @@ function cadastrarDespesa() {
     let despesa = new Despesa(ano.value, mes.value, dia.value, tipo.value, descricao.value, valor.value);
     
     if (despesa.validarDados()) {
-        
+        document.getElementById('modal-titulo').innerHTML = "Sucesso";
+        document.getElementById('modal-titulo-texto').className = "modal-header text-success";
+
+        document.getElementById('modal-corpo').innerHTML = 'Despesas incluídas com sucesso!';
+
+        document.getElementById('modal-botao').innerHTML = 'Ok';
+        document.getElementById('modal-botao').className = 'btn btn-success';
         $('#modalRegistraDespesa').modal('show');
         db.gravar(despesa);
     } else {
-        document.getElementById('modal-corpo').innerHTML = 'Erro na inclusão de despesas'
+        document.getElementById('modal-titulo').innerHTML = "Erro";
+        document.getElementById('modal-titulo-texto').className = "modal-header text-danger";
+
+        document.getElementById('modal-corpo').innerHTML = 'Erro na inclusão de despesas, Preencha os campos obrigatórios!';
+
+        document.getElementById('modal-botao').innerHTML = 'Ok';
+        document.getElementById('modal-botao').className = 'btn btn-danger';
         $('#modalRegistraDespesa').modal('show');
         
     }
 }
-
-
-
-
-
